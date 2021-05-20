@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Каталог машин</title>
+  <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+</head>
+
+<body>
+  <header>
+  </header>
+  <main>
+      <div class="container my-1">
+        <section class="text-center mb-4">      
+          <h3 class="my-4">Подбор машин по параметрам</h3>
+              <form class="md-1">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <input type="text" id="brand" name="brand" class="form-control" placeholder="Марка">
+                    <input type="text" id="model" name="model" class="form-control" placeholder="Модель">
+                    <input type="text" id="year" name="year" class="form-control" placeholder="Год выпуска">
+                    <input type="text" id="color" name="color" class="form-control" placeholder="Цвет">
+                    <select id="gearbox" name="gearbox" class="browser-default custom-select">
+                      <option selected>Трансмиссия</option>
+                      <option value="1">Механика</option>
+                      <option value="2">Автомат</option>
+                      <option value="3">Робот</option>
+                    </select>
+                  </div>
+                </div>     
+                <div class="row">
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-secondary btn-md">Поиск</button>
+                  </div>
+                </div>
+              </form>
+        </section>
+
+        {% if object_list %}
+          <ul class="list-group">
+          {% for car in object_list %}
+            <li class="list-group-item text-center">{{ car }}</li>    
+          {% endfor %}
+          </ul>
+        {% else %}
+          <div class="alert alert-info text-center" role="alert">
+            По этим параметрам машин нет
+          </div>
+        {% endif %}
+      </div>
+  </main>
+
+  <footer>
+  </footer>
+
+ 
+</body>
+
+</html>
